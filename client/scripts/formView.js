@@ -16,7 +16,18 @@ var FormView = {
 
     // TODO: Currently, this is all handleSubmit does.
     // Make this function actually send a message to the Parse API.
-  
+    let url = window.location.search;
+    let urlSplit = url.split('=');
+    let username = urlSplit[1];
+    let text = document.getElementById('message').value;
+    let rooms = document.getElementById('rooms');
+    let roomname = rooms.options[select.selectedIndex].value;
+    let message = {
+      username: username,
+      text: text,
+      roomname: roomname
+    };
+
     console.log('click!');
   },
 
