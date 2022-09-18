@@ -20,13 +20,18 @@ var FormView = {
     let urlSplit = url.split('=');
     let username = urlSplit[1];
     let text = document.getElementById('message').value;
-    let rooms = document.getElementById('rooms');
-    let roomname = rooms.options[select.selectedIndex].value;
+    let roomname = RoomsView.$select.find(':selected').val();
     let message = {
       username: username,
       text: text,
       roomname: roomname
     };
+
+    Parse.create(message, ()=>{});
+
+    MessagesView.initialize();
+
+    $('#send')[0].reset();
 
     console.log('click!');
   },
